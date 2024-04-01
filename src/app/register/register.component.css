@@ -1,0 +1,48 @@
+
+
+.class_1 {
+  width: 75vw;
+  height: 100vh;
+
+  padding: 1px;
+}
+
+.image-container {
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  width: 100%;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.btn-primary {
+  align-self: flex-end;
+}
+.form-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.registration-form {
+  margin-left: 20px; /* Adjust as needed */
+  flex-grow: 1; /* Form takes remaining space */
+}
+
+/* Your other CSS styles for inputs, buttons, etc. */
+.class_2 {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto 10px;
+  padding: 20px;
+
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: rgb(136, 136, 136) 1px 1px 30px;
+  backdrop-filter: blur(3px);
+}

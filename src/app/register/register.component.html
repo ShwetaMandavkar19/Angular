@@ -1,0 +1,287 @@
+<div class="class_1">
+  <form class="class_2" (ngSubmit)="submitForm()" #registrationForm="ngForm">
+    <div class="image-container">
+      <img [src]="Url" title="Profile Picture" height="150px" width="150px" />
+      <input
+        type="file"
+        (change)="onFileChange($event)"
+        formControlName="image"
+        accept="image/*"
+      />
+    </div>
+
+    <div class="input-container">
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        placeholder="firstName"
+        required
+        pattern="[a-zA-Z ]{1,20}"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['firstName'].hasError('required') &&
+          (registrationForm.controls['firstName'].dirty ||
+            registrationForm.controls['firstName'].touched)
+        "
+      >
+        First name is required.
+      </div>
+      <div
+        *ngIf="
+          registrationForm.controls['firstName'].hasError('pattern') &&
+          (registrationForm.controls['firstName'].dirty ||
+            registrationForm.controls['firstName'].touched)
+        "
+      >
+        Only alphabetic characters are allowed and length should not exceed 20
+        characters.
+      </div>
+      <input
+        type="text"
+        placeholder="lastName"
+        class="form-control"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+        pattern="[a-zA-Z ]{1,20}"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['lastName'].hasError('required') &&
+          (registrationForm.controls['lastName'].dirty ||
+            registrationForm.controls['lastName'].touched)
+        "
+      >
+        Last name is required.
+      </div>
+      <div
+        *ngIf="
+          registrationForm.controls['lastName'].hasError('pattern') &&
+          (registrationForm.controls['lastName'].dirty ||
+            registrationForm.controls['lastName'].touched)
+        "
+      >
+        Only alphabetic characters are allowed and length should not exceed 20
+        characters.
+      </div>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="example@gmail.com"
+        [(ngModel)]="user.email"
+        required
+        email
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['email'].hasError('required') &&
+          (registrationForm.controls['email'].dirty ||
+            registrationForm.controls['email'].touched)
+        "
+      >
+        Email is required.
+      </div>
+      <div
+        *ngIf="
+          registrationForm.controls['email'].hasError('email') &&
+          (registrationForm.controls['email'].dirty ||
+            registrationForm.controls['email'].touched)
+        "
+      >
+        Please enter a valid email address.
+      </div>
+      <input
+        type="number"
+        class="form-control"
+        id="phoneNumber"
+        name="phoneNumber"
+        [(ngModel)]="user.phoneNumber"
+        required
+        placeholder="(+91)"
+        pattern="[0-9]{10}"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['phoneNumber'].hasError('required') &&
+          (registrationForm.controls['phoneNumber'].dirty ||
+            registrationForm.controls['phoneNumber'].touched)
+        "
+      >
+        Phone number is required.
+      </div>
+      <div
+        *ngIf="
+          registrationForm.controls['phoneNumber'].hasError('pattern') &&
+          (registrationForm.controls['phoneNumber'].dirty ||
+            registrationForm.controls['phoneNumber'].touched)
+        "
+      >
+        Please enter a 10-digit phone number.
+      </div>
+      <label for="">Age:</label>
+      <input
+        type="range"
+        class="form-control-range"
+        id="age"
+        name="age"
+        [(ngModel)]="user.age"
+        required
+        min="18"
+        max="60"
+      />
+      <div
+        *ngIf="
+          registrationForm.controls['age'].hasError('required') &&
+          (registrationForm.controls['age'].dirty ||
+            registrationForm.controls['age'].touched)
+        "
+      >
+        Age is required.
+      </div>
+      <div *ngIf="user.age !== null && (user.age < 18 || user.age > 60)">
+        Please enter an age between 18 and 60.
+      </div>
+      <select
+        class="form-control"
+        id="country"
+        name="country"
+        [(ngModel)]="user.country"
+        required
+      >
+        <option value="" disabled selected>Select Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="Russia">Russia</option>
+      </select>
+      <select
+        *ngIf="user.country === 'India'"
+        class="form-control"
+        id="state"
+        name="state"
+        [(ngModel)]="user.state"
+        required
+      >
+        <option value="" disabled selected>Select State</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="MadhyaPradesh">MadhyaPradesh</option>
+        <option value="WestBengal">WestBengal</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Gujarat">Gujarat</option>
+      </select>
+      <select
+        *ngIf="user.country === 'USA'"
+        class="form-control"
+        id="state"
+        name="state"
+        [(ngModel)]="user.state"
+        required
+      >
+        <option value="" disabled selected>Select State</option>
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+      </select>
+      <select
+        *ngIf="user.country === 'Russia'"
+        class="form-control"
+        id="state"
+        name="state"
+        [(ngModel)]="user.state"
+        required
+      >
+        <option value="" disabled selected>Select State</option>
+        <option value="Altai Krai">Altai Krai</option>
+        <option value="Amur Oblast">Amur Oblast</option>
+        <option value="Arkhangelsk Oblast">Arkhangelsk Oblast</option>
+        <option value="Astrakhan Oblast">Astrakhan Oblast</option>
+        <option value="Bashkortostan">Bashkortostan</option>
+        <option value="Belgorod Oblast">Belgorod Oblast</option>
+      </select>
+
+      <select
+        class="form-control"
+        id="address"
+        name="address"
+        [(ngModel)]="user.addressType"
+        required
+      >
+        <option value="" disabled selected>Select Address Type</option>
+        <option value="home">Home</option>
+        <option value="company">Company</option>
+      </select>
+      <input
+        *ngIf="user.addressType === 'home'"
+        type="text"
+        class="form-control"
+        id="homeAddress1"
+        name="homeAddress1"
+        [(ngModel)]="user.homeAddress1"
+        placeholder="Home Address 1"
+        required
+      />
+      <input
+        *ngIf="user.addressType === 'home'"
+        type="text"
+        class="form-control"
+        id="homeAddress2"
+        name="homeAddress2"
+        [(ngModel)]="user.homeAddress2"
+        placeholder="Home Address 2"
+      />
+      <input
+        *ngIf="user.addressType === 'company'"
+        type="text"
+        class="form-control"
+        id="companyAddress1"
+        name="companyAddress1"
+        [(ngModel)]="user.companyAddress1"
+        placeholder="Company Address 1"
+        required
+      />
+      <input
+        *ngIf="user.addressType === 'company'"
+        type="text"
+        class="form-control"
+        id="companyAddress2"
+        name="companyAddress2"
+        [(ngModel)]="user.companyAddress2"
+        placeholder="Company Address 2"
+      />
+    </div>
+
+    <table>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Hobby"
+              [(ngModel)]="user.hobbyInput"
+              (keyup.enter)="addHobby()"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <mat-chip-grid>
+      <mat-chip *ngFor="let hobby of hobbies" (removed)="removeHobby(hobby)">
+        {{ hobbies }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-grid>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

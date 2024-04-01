@@ -1,0 +1,22 @@
+<!-- profile.component.html -->
+<div class="class_1" style="border: solid black">
+  <h1 style="font-size: 30px">User Profile</h1>
+  <div class="image-container">
+    <img [src]="Url" title="Profile Picture" height="100px" width="100px" />
+    <!-- <button type="button" class="reg btn-primary" (click)="openRegistrationFormDialog()">Edit Profile</button> -->
+  </div>
+  <div>
+    <p>
+      I'm {{ user.firstName }} {{ user.lastName }} and im above
+      {{ user.age }} yrs and
+    </p>
+    <p>you can send your emails to {{ user.email }}</p>
+    <p>i live in the country {{ user.country }} and state {{ user.state }} .</p>
+    <p style="display: none">Home: {{ user.homeAddress1" }}</p>
+    <p>i like to play hockey,football and reading books.</p>
+    <p>please reach out to me on my {{ user.phoneNumber }}</p>
+  </div>
+  <div>
+    <p>Current Time: {{ currentTime | date : "medium" }}</p>
+  </div>
+</div>

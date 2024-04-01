@@ -1,0 +1,10 @@
+<form [formGroup]="imageForm" (ngSubmit)="submitForm()">
+  <img [src]="Url" title="Profile Picture" height="150px" width="150px" />
+  <input
+    type="file"
+    (change)="onFileChange($event)"
+    formControlName="image"
+    accept="image/*"
+  />
+  <button type="submit" [disabled]="imageForm.invalid">Submit</button>
+</form>
